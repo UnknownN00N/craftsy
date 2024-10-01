@@ -1,14 +1,17 @@
-const path  = require('path')
+const {getData} = require('../data')
+const data =  getData("products.json")  
 
 module.exports = {
-    index : (req, res) =>{
+    index : (req,res) => {
 
-return res.render('home')
-
-return res.sendFile(path.join(__dirname, '..', "views", "home.ejs"))
+        return res.render('home',{
+            products : data
+        })
     },
-    admin : (req, res) =>{
-        return res.render('admin')
-        return res.sendFile(path.join(__dirname, '..', "views", "admin.html"))
+    admin : (req,res) => {
+
+        return res.render('admin',{
+            title : "admin"
+        })
     }
 }
